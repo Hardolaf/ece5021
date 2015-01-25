@@ -755,14 +755,26 @@ $$={KTZ\over(z-1)^2}$$
   \caption{I don't really know what this picture is yet. I just put it in.}
 \end{figure}
 
+\subsection{Issues to Address in Selection of the Transformations}
+
+T\begin{table}[h]
+\centering
+\begin{tabulary}{1\textwidth}{L|L|L}
+  \underline{Property} & \underline{$H_a(S_a)$} & \underline{$H(z)$} \\
+  I. Rational Functions & rational function of $S_a$ selectivity & rational
+  function of $z$ selectivity \\
+  II. Mapping the Unit Circle for $|x| = 1$ & $s = j\omega_a$ &
+  $z=e^{j\omega T}$ (unit circle) \\
+  III. Stability $|z|<1$ $Re(S_a) < 0$ & stable (LHP) poles & stable
+  poles (inside unit circle) \\
+\end{tabulary}
+\caption{Selecting the transformation.}
+\end{table}
+
 \begin{figure}[h]
   \centering\includegraphics[scale=0.5]{chapter2_figure2.png}
   \caption{I don't really know what this picture is yet. I just put it in.}
 \end{figure}
-
-\subsection{Issues to Address in Selection of the Transformations}
-
-TABLE
 
 \textit{Approach}
 A system funciton $H_a(s_a)$ response can be determined from a collection of $1^{st}$ order differential equations. From the state variable point of view:
@@ -772,7 +784,7 @@ $$g_i = \text{ linear function of }x_i(t) \text{ and the input signal }
 $${\partial x_i\over \partial t}=g_i(t)$$
 $$\text{Laplace transform: }s_ax_i(s_a)=G_i(s_a)\quad i=1,2,3,\dots N\quad x_i(t)=0\quad t<0$$
 $$\int_{(n+1)T}^{nT}{\partial x_i\over\partial t} dt=x_i(nT)-x_i[(n-1)T]=\int_{(n-1)T}^{nT}g_i(t)dt$$
-We need a $1^{st}$ order difference equation for out sampled data system, which we can develop as 
+We need a $1^{st}$ order difference equation for out sampled data system, which we can develop as
 $$X_i(nT)-x_i[(n-1)T]\to(1-z^{-1})X_i(z)
 but how do we evaluate the $\zeta$-transform for $\int_{(n-1)T}^{nT}g_i(t)dt$?
 Let us examine several approaches:
