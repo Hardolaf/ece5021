@@ -773,7 +773,29 @@ $$={KTZ\over(z-1)^2}$$
   \caption{I don't really know what this picture is yet. I just put it in.}
 \end{figure}
 
+\subsection{Issues to Address in Selection of the Transformations}
+
+TABLE
+
+\textit{Approach}
+A system funciton $H_a(s_a)$ response can be determined from a collection of $1^{st}$ order differential equations. From the state variable point of view:
+
+$$x_i=\text{ state variable }i = 1, 2, \dots N \text{ state equations }$$
+$$g_i = \text{ linear function of }x_i(t) \text{ and the input signal }
+$${\partial x_i\over \partial t}=g_i(t)$$
+$$\text{Laplace transform: }s_ax_i(s_a)=G_i(s_a)\quad i=1,2,3,\dots N\quad x_i(t)=0\quad t<0$$
+$$\int_{(n+1)T}^{nT}{\partial x_i\over\partial t} dt=x_i(nT)-x_i[(n-1)T]=\int_{(n-1)T}^{nT}g_i(t)dt$$
+We need a $1^{st}$ order difference equation for out sampled data system, which we can develop as 
+$$X_i(nT)-x_i[(n-1)T]\to(1-z^{-1})X_i(z)
+but how do we evaluate the $\zeta$-transform for $\int_{(n-1)T}^{nT}g_i(t)dt$?
+Let us examine several approaches:
+
 \subsection{Forward Euler Integrator}
+
+$$\int_{(n-1)T}^{nT}g_i(t)dt\simeqTg_i[(n-1)T]$$
+$$\therefore x_i(nT)-x_i[(n-1)T]=Tg_i[(n-1)T]$$
+$$x_i(\tau)-z^{-1}x_i(z)=Tz^{-1}G_i(z)$$
+$$({z-1\over T})x_i(z)=G_i(z)\Rightarrow
 
 \begin{figure}[h]
   \centering\includegraphics[scale=0.5]{chapter2_figure3.png}
