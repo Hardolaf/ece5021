@@ -14,7 +14,7 @@
 %
 % Compiling this template:
 % This template uses biber for its bibliography and makeindex for its index.
-% When you first open the template, compile it from the command line with the 
+% When you first open the template, compile it from the command line with the
 % commands below to make sure your LaTeX distribution is configured correctly:
 %
 % 1) pdflatex main
@@ -23,7 +23,7 @@
 % 4) pdflatex main x 2
 %
 % After this, when you wish to update the bibliography/index use the appropriate
-% command above and make sure to compile with pdflatex several times 
+% command above and make sure to compile with pdflatex several times
 % afterwards to propagate your changes to the document.
 %
 % This template also uses a number of packages which may need to be
@@ -65,6 +65,9 @@
 \usepackage{wrapfig}
 \usepackage{mathtools}
 \usepackage{amsfonts}
+
+% Resizing tables
+\usepackage{tabulary}
 
 % Bibliography
 \usepackage[style=alphabetic,sorting=nyt,sortcites=true,autopunct=true,babel=hyphen,hyperref=true,abbreviate=false,backref=true,backend=biber]{biblatex}
@@ -175,14 +178,14 @@ Discrete Analog Signal Processing (DASP) is a hybrid method of processing analog
 
 \begin{table}[h]
   \centering
-  \begin{tabular}{lll}
+  \begin{tabulary}{1\textwidth}{lll}
     $\bullet$ Architechture/Algorithms & $\bullet$ S/N ratios & $\bullet$ Size \\
     $\bullet$ I/O requirements & $\bullet$ Dynamic range & $\bullet$ Weight \\
     $\bullet$ Bandwidth (TBWP) & $\bullet$ Linearity & $\bullet$ Cost \\
     $\bullet$ Precision & $\bullet$ Distortion &  \\
     $\bullet$ Sensor-based Systems & $\bullet$ Stability & \\
     $\bullet$ Programmability & $\bullet$ Power Dissipation &  \\
-  \end{tabular}
+  \end{tabulary}
 \end{table}
 
 \begin{figure}[h]
@@ -228,31 +231,31 @@ Discrete Analog Signal Processing (DASP) is a hybrid method of processing analog
 
 \begin{table}[h]
   \centering
-  \begin{tabular}{|l|l|l}
-    \toprule
+  \begin{tabulary}{1\textwidth}{|l|L|L|}
+    \hline
     \textbf{Possible Issues} & \textbf{Discrete Analog Components} & \textbf{Integrated Analog Components}\\
-    \midrule
+    \hline
     Component accuracy & Well-known & Poor absolute accuracies (rely on ratios) \\
-    \midrule
+    \hline
     Breadboarding & Yes & No - but possible with a wire-bonded best chip \\
-    \midrule
+    \hline
     Fabrication & Independent & Very dependent \\
-    \midrule
+    \hline
     Physical implemntation & PCB layout & Layout verification, parameter emphasism \\
-    \midrule
+    \hline
     Parasitics & Not very important & Must be included in design and simulations \\
-    \midrule
+    \hline
     Simulation & Model parameters are supplied by vendor & Model parameters vary widely from fab to fab \\
-    \midrule
+    \hline
     Testing & Generally, complete testing is possible & Must be considered in the design with test points \\
-    \midrule
+    \hline
     CAD & Schematic capture, PC board layout, simulation & Schematic capture, simulation, explanation, layout, DRC \\
-    \midrule
+    \hline
     Component selection & All possible & Limited to the technology selection (active devices, capacitors, resistors) \\
-    \midrule
+    \hline
     Economics & May be very economical on a limited basis & Economical on a large scale with possible enhanced performance \\
-    \bottomrule
-  \end{tabular}
+    \hline
+  \end{tabulary}
   \caption{Comparison of the properties of the three types of signals.}
 \end{table}
 
@@ -262,7 +265,7 @@ Discrete Analog Signal Processing (DASP) is a hybrid method of processing analog
 
 \begin{table}[h]
   \centering
-  \begin{tabular}{lll}
+  \begin{tabulary}{1\textwidth}{LLL}
     \textbf{Bipolar} & \textbf{MOS/CMOS} & \textbf{Other devices}\\
     Wide supply range & Integration with digital & JFETS - Very low noise \\
     High gain & Switched capacitor technology & Sibe - High frequency, low noise \\
@@ -270,7 +273,7 @@ Discrete Analog Signal Processing (DASP) is a hybrid method of processing analog
     Low noise & High input impedance &  \\
     Good parameter matching & Low-level analog switches with no off-set &  \\
      & Voltage controlled resistors &  \\
-  \end{tabular}
+  \end{tabulary}
 \end{table}
 
 %------------------------------------------------
@@ -426,7 +429,7 @@ Show the percent overshoot response to a unit step input $V_i(s)={1\over s}$ is 
 \subsection{Discrete Analog Signal Processing (DASP)}\index{Sampled Data System!Discrete Analog Signal Processing}
 \index{Sampled Data System!DASP}
 
-We discuss the basic theory of sampling with a unit sampling function  
+We discuss the basic theory of sampling with a unit sampling function
 
 $$U(T,\tau)$$
 
@@ -458,7 +461,7 @@ $n\phi=n\omega_s(\frac{\tau}{2})$ phase angle of the n$^{th}$ harmonic
 
 $\frac{2\tau}{T}\frac{\sin(n\pi\frac{\tau}{T})}{n\pi\frac{\tau}{T}}$ amplitude of the n$^{th}$ harmonic]
 
-Now, we have 
+Now, we have
 
 $$f^*(t)=U(\tau,t) f(t)={\tau\over T}f(t) + {2\tau\over T}\sum_{n=1}^\infty{\sin({n\pi\tau\over T})\over ({n\pi\tau\over T})}\cos[n(w_st-\phi)]\cdot f(t)$$
 
@@ -490,7 +493,7 @@ When the input signal is a composite periodic wave with 'm' frequency components
 
 FIGURE
 
-We can see if the sampling frequency is such that w$_s$-w$_0$=w$_0$ then there is the possibility of 'overlap' of the frequency spectra, which is called 'aliasing'. In order to prevent this situation we require $w_s\geq 2w_0$, which is called the Nyquist criteria. Under these circumstances, we can pass the output signal through an ideal LPF to recover the input signal. For the case of the single frequency component we have 
+We can see if the sampling frequency is such that w$_s$-w$_0$=w$_0$ then there is the possibility of 'overlap' of the frequency spectra, which is called 'aliasing'. In order to prevent this situation we require $w_s\geq 2w_0$, which is called the Nyquist criteria. Under these circumstances, we can pass the output signal through an ideal LPF to recover the input signal. For the case of the single frequency component we have
 
 $$\frac{\tau V}{T}=\cos(\omega_0t+\theta_0)$$
 
@@ -506,7 +509,7 @@ The clamping device holds the measured values of the input signal at the samplin
 
 FIGURE
 
-If the sampling frequency is greater than twice the signal frequency w$_0$ (assuming a single frequency input) and we pass the clamped signal through a LPF, then the output of the filter is 
+If the sampling frequency is greater than twice the signal frequency w$_0$ (assuming a single frequency input) and we pass the clamped signal through a LPF, then the output of the filter is
 
 $$aV{\sin(w_0T_c/2)\over (w_0T_0/2)}\cos(w_0(t-\sfrac{T_c}{2})+\theta_0)$$
 
@@ -702,22 +705,27 @@ $$={KTZ\over(z-1)^2}$$
 
 \begin{table}[h]
   \centering
-  \begin{tabular}{|l|l|l}
+  \begin{tabulary}{1\textwidth}{|l|l|l|}
+    \hline
     \textbf{Name} & \textbf{f(t)} & \textbf{F(z)}\\
+    \hline
     Delayed Impulse & $K\delta(t-mT)$ & $KZ^{-m}$ \\
     Exponential & $Ke^{-at}$ & ${Ke^{at}Z\over e^{aT}Z-1}={KZ\over Z-e^{-aT}}$ \\
     Sine & $\sin w_0t$ & ${Z\sin w_0T\over Z^2-2\cos w_0TZ+1}$ \\
     Cosine & $\cos w_0t$ & ${Z(Z-\cos w_0 T)\over Z^2-2\cos 2_0TZ+1}$ \\
-  \end{tabular}
+    \hline
+  \end{tabulary}
 \end{table}
 
 \subsection{Properties of Z-Transforms and S-Transforms}\index{Sampled Data System!Properties of Z-Transforms and S-Transforms}
 
 \begin{table}[h]
   \centering
-  \begin{tabular}{|l|l|l}
+  \begin{tabulary}{1\textwidth}{|l|L|L|}
+    \hline
     \textbf{Property} & \textbf{Z-Transform} & \textbf{S-Transform}\\
-    $1^o$ Linearity & $\zeta\{af(t)\}=aF(z)$ & $\substack{\mathcal{L}\{af(t)\}=aF(s)\\ 
+    \hline
+    $1^o$ Linearity & $\zeta\{af(t)\}=aF(z)$ & $\substack{\mathcal{L}\{af(t)\}=aF(s)\\
     \mathcal{L}\{f_1(t)\pm f_2(t)\}=F_1(s)\pm F_2(s)}$ \\
     $2^o$ Real transform & $\zeta\{f(t\pm nT)\}=Z^{\pm n} F(z)$ & $\mathcal{L}\{f(t\pm a)\}=e^{\pm as}F(s)$ \\
     $3^o$ Scale change & $\zeta\{e^{\pm at}f(t)\}=F(e^{\mp aT}a)$ & $\substack{\mathcal{L}\{e^{\pm at}f(t)\}=F(s\mp a)\\
@@ -726,8 +734,19 @@ $$={KTZ\over(z-1)^2}$$
     =\sum_{k=0}^\infty f_1(kT)f_2(n-k)T=F_1(z)F_2(z)}$ & $\mathcal{L}\{\int_0^tf_1(\tau)f_2(t-\tau_d\tau\}=F_1(s)\cdot F_2(s)$ \\
     $5^o$ Final value Theorem & $\lim_{z\to 1}\left[(1-z^{-1})F(z)\right]=\lim_{t\to\infty}f(t)$ & $\lim_{s\to 0}[sF(s)]=\lim_{t\to\infty}f(t)$ \\
     $6^o$ Initial value theorem & $\lim_{z\to\infty}[F(s)]=\lim_{t\to 0}f(t)$ & $\lim_{s\to\infty}[sF(s)]=\lim_{t\to 0}f(t)$ \\
-  \end{tabular}
+    \hline
+  \end{tabulary}
 \end{table}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER 2
+%----------------------------------------------------------------------------------------
+
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+
+\chapter{Design of Discrete Analog Signal Processors}
+
+\section{Design Strategy for Continuous to Sampled Data Systems}\index{Design Strategies!Continuous to Sampled Data Systems}
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
