@@ -851,12 +851,16 @@ $$({2\over T}\underbrace{z-1\over z+1}_{s_a})x_i(z)=G_i(z)\qquad \text{ Select }
 \begin{enumerate}
  \item Rational? O.K.
  \item Mapping into unit circle? $s_a=jw_a={2\over T}({z=1\over z+1})$\\
-$jw_{a\over 2}T(z+1)=z-1$\\
-$z(1-jw_{a\over 2}T)=1+jw_{a\over 2}T\quad z={1+jw_{a\over 2}T\over 1-jw_{a\over 2}T} \quad |z|=1 \quad\text{ O.K.}$
-\item Stable? test $s_a=\sigma_a+jw_a\quad\sigma_a<0$
+  $jw_{a\over 2}T(z+1)=z-1$\\
+  $z(1-jw_{a\over 2}T)=1+jw_{a\over 2}T\quad z={1+jw_{a\over 2}T\over 1-jw_{a\over 2}T} \quad |z|=1 \quad\text{ O.K.}$
+  \item Stable? test $s_a=\sigma_a+jw_a\quad\sigma_a<0$
 $|z|=\left|{1+\sigma_aT/2+jw_aT/2\over(1-\sigma_{a\over 2}T)-jw_aT/2}\right|<1 \text{ O.K.}$
 $jw_a={2\over T}{e^{jwT}-1\over e^{jwT}+1}={2\over T}{e^{jwT\over 2}-e^{-jwT\over 2}\over e^{jwT\over 2}+e^{-jwT\over 2}}=j({2\over T})\tan({wT\over 2})$
-$\therefore\tcolorbox{{w_aT\over 2}=\tan({wT\over 2})\text{ or }{wT\over 2}=\tan^{-1}({w_aT\over 2})}$
+$\therefore$
+\end{enumerate}
+\begin{tcolorbox}
+  $${{w_aT\over 2}=\tan({wT\over 2})\text{ or }{wT\over 2}=\tan^{-1}({w_aT\over 2})}$$
+\end{tcolorbox}
 Which relates the frequency of the continuous time model ($w_a$) to the sampled data frequency (w).
 $w\sim w_a\text{ near }w=0,\pm{2\pi\over T}$
 Thus, the w-axis (sampled frequency) is warped as compared with the analog frequency $w_a$.
@@ -875,7 +879,7 @@ Thus, the w-axis (sampled frequency) is warped as compared with the analog frequ
 
 $$\int_{(n-1)T}^{(n+1)T}g_i(t)dt=\int_{(n-1)T}^{(n+1)T}{\partial x_i\over \partial t}=2Tg_i(nT)=x_i[(n+1)T]-x_i[(n-1)T]$$
 $$zx_i(z)-z^{-1}x_i(z)=2TG_i(z)$$
-$$({z-z^{-1}\over 2T})\cdot x_i(z)=G_i(z)
+$$({z-z^{-1}\over 2T})\cdot x_i(z)=G_i(z)$$
 \begin{tcolorbox}
   LDI Transform\\
   $S_a={z-z^{-1}\over 2T}$
@@ -891,15 +895,16 @@ $$({z-z^{-1}\over 2T})\cdot x_i(z)=G_i(z)
  $z_az_2=[s_aT+\sqrt{1+(s_aT)^2}][s_aT-sqrt{1+(s_aT)^2}]=-1$\\
  $therefore z_2=-{1\over z_1}\text{ if }|z_1|<1\text{ then }|z_2|>1\Rightarrow\text{ unstable }$\\
 \end{enumerate}
-\\
-TABLE\\
-\\
+
+%TABLE
+
 The only transform that satisfies all 3 criteria is the Bilinear Z Transform.
-\tcolorbox{
-Prob#4: Show the 3-point Simpson Integration yields the expression
+\begin{tcolorbox}
+Prob\#4: Show the 3-point Simpson Integration yields the expression
 $$\int_{(n-2)T}^{(n+1)T}g_i(t)dt\simeq{T\over 3}\left[g_i[(n-1)T]+g_i[(n+1)T]\right]$$
 and find the transformation $s_a=f(z)$. Discuss the 3 conditions requiring the transformation.
-}
+\end{tcolorbox}
+
 \begin{figure}[h]
   \centering\includegraphics[scale=0.5]{chapter2_figure8.png}
   \caption{I don't really know what this picture is yet. I just put it in.}
