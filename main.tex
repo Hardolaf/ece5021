@@ -873,6 +873,33 @@ Thus, the w-axis (sampled frequency) is warped as compared with the analog frequ
 
 \subsection{Midpoint Integration}
 
+$$\int_{(n-1)T}^{(n+1)T}g_i(t)dt=\int_{(n-1)T}^{(n+1)T}{\partial x_i\over \partial t}=2Tg_i(nT)=x_i[(n+1)T]-x_i[(n-1)T]$$
+$$zx_i(z)-z^{-1}x_i(z)=2TG_i(z)$$
+$$({z-z^{-1}\over 2T})\cdot x_i(z)=G_i(z)
+\begin{tcolorbox}
+  LDI Transform\\
+  $S_a={z-z^{-1}\over 2T}$
+\end{tcolorbox}
+\begin{enumerate}
+ \item Rational? O.K.
+ \item Mapping into unit circle? $s_a=jw_a={e^{jwT}-e^{-jwT}\over 2T}={j\sin wT\over T}$\\
+ $|z|=|e^{j\sin^{-1}w_aT}|=1\quad w_a={1\over T}\sin wT\to w={1\over T}\sin^{-1}w_aT$\\
+ $\therefore\text{ Unit circle of Z-plane maps into }jw_a\text{ axis }$\\
+ \item $z_{12}=s_aT\pm\sqrt{1+(s_aT)^2}\text{ if }s_a=jw_a\quad|w_a|\leq\sfrac{1}{T}$\\
+ $|z_1|=|z_2|=(w_aT)^2+[1-(w_aT)^2]=1$\\
+ and both values lie on the unit circle.\\
+ $z_az_2=[s_aT+\sqrt{1+(s_aT)^2}][s_aT-sqrt{1+(s_aT)^2}]=-1$\\
+ $therefore z_2=-{1\over z_1}\text{ if }|z_1|<1\text{ then }|z_2|>1\Rightarrow\text{ unstable }$\\
+\end{enumerate}
+\\
+TABLE\\
+\\
+The only transform that satisfies all 3 criteria is the Bilinear Z Transform.
+\tcolorbox{
+Prob#4: Show the 3-point Simpson Integration yields the expression
+$$\int_{(n-2)T}^{(n+1)T}g_i(t)dt\simeq{T\over 3}\left[g_i[(n-1)T]+g_i[(n+1)T]\right]$$
+and find the transformation $s_a=f(z)$. Discuss the 3 conditions requiring the transformation.
+}
 \begin{figure}[h]
   \centering\includegraphics[scale=0.5]{chapter2_figure8.png}
   \caption{I don't really know what this picture is yet. I just put it in.}
