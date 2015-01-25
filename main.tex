@@ -780,27 +780,32 @@ T\begin{table}[h]
 A system funciton $H_a(s_a)$ response can be determined from a collection of $1^{st}$ order differential equations. From the state variable point of view:
 
 $$x_i=\text{ state variable }i = 1, 2, \dots N \text{ state equations }$$
-$$g_i = \text{ linear function of }x_i(t) \text{ and the input signal }
+$$g_i = \text{ linear function of }x_i(t) \text{ and the input signal }$$
 $${\partial x_i\over \partial t}=g_i(t)$$
 $$\text{Laplace transform: }s_ax_i(s_a)=G_i(s_a)\quad i=1,2,3,\dots N\quad x_i(t)=0\quad t<0$$
 $$\int_{(n+1)T}^{nT}{\partial x_i\over\partial t} dt=x_i(nT)-x_i[(n-1)T]=\int_{(n-1)T}^{nT}g_i(t)dt$$
 We need a $1^{st}$ order difference equation for out sampled data system, which we can develop as
-$$X_i(nT)-x_i[(n-1)T]\to(1-z^{-1})X_i(z)
-but how do we evaluate the $\zeta$-transform for $\int_{(n-1)T}^{nT}g_i(t)dt$?
+$$X_i(nT)-x_i[(n-1)T]\to(1-z^{-1})X_i(z)$$
+but how do we evaluate the $$\zeta$$-transform for $$\int_{(n-1)T}^{nT}g_i(t)dt$$?
 Let us examine several approaches:
 
 \subsection{Forward Euler Integrator}
 
-$$\int_{(n-1)T}^{nT}g_i(t)dt\simeqTg_i[(n-1)T]$$
+$$\int_{(n-1)T}^{nT}g_i(t)dt\simeq Tg_i[(n-1)T]$$
 $$\therefore x_i(nT)-x_i[(n-1)T]=Tg_i[(n-1)T]$$
 $$x_i(\tau)-z^{-1}x_i(z)=Tz^{-1}G_i(z)$$
-$$({z-1\over T})x_i(z)=G_i(z)\Rightarrow\tcolorbox{S_a={z-1\over T}\quad\text{Substitute this expression in transform}}$$
+$({z-1\over T})x_i(z)=G_i(z)\Rightarrow$
+\begin{tcolorbox}
+  ${S_a={z-1\over T}\quad\text{Substitude this expression in transform}}$
+\end{tcolorbox}
+
 Let's check out 3 criteria:
+
 \begin{enumerate}
-\item Rational function? OK
-\item Mapping into unit circle? $S_a=\zeta w_a\to Z=1+S_aT=1+jw_aT$\\
-$|z|=1$ only when $w_a=0$ or $w_a\ll\sfrac{1}{T} in general not satisfied
-\item Stability? Most complex poles in LHP map into the unit circle, but as the poles approach the jw axis instability may occur.
+  \item Rational function? OK
+  \item Mapping into unit circle? $S_a=\zeta w_a\to Z=1+S_aT=1+jw_aT$\\
+  $|z|=1$ only when $w_a=0$ or $w_a\ll\sfrac{1}{T}$ in general not satisfied
+  \item Stability? Most complex poles in LHP map into the unit circle, but as the poles approach the jw axis instability may occur.
 \end{enumerate}
 Zeros do not map from jw axis to the unit circle.
 
@@ -825,13 +830,16 @@ $$\int_{(n-1)T}^{nT}g_i(t)dt\simeq Tg_i(nT)$$
 $$x_i(nT)-x_i[(n-1)T]\simeq Tg_i(nT)$$
 $$x_i(z)-z^{-1}x_i(t)=TG(z)$$
 $$({1-z^{-1}\over T})\cdot X_i(z)=G(z)$$
-\tcolorbox{let $s_a={1-z^{-1}\over T}={z-1\over ZT}$ do transform}
+\begin{tcolorbox}
+  let $s_a={1-z^{-1}\over T}={z-1\over ZT}$ do transform
+\end{tcolorbox}
 
 \begin{enumerate}
-\item Rational? O.K.
-\item MApping into unit circle? $Z={1\over 1-jw_aT}={1+jw_aT\over 1+w_a^2T^2}$\\
-$|z|=1\text{ only for }w_a=0 (w_a\ll 1/T)$
-\item Stability? Poles move away from unit circle in Z-plane as poles move towards $jw_a$ axis in s-plane. Not satisfied.
+  \item Rational? O.K.
+  \item MApping into unit circle? $Z={1\over 1-jw_aT}={1+jw_aT\over 1+w_a^2T^2}$\\
+  $|z|=1\text{ only for }w_a=0 (w_a\ll 1/T)$
+  \item Stability? Poles move away from unit circle in Z-plane as poles move
+  towards $jw_a$ axis in s-plane. Not satisfied.
 \end{enumerate}
 
 \subsection{Trapezoidal Integrator (Bilinear Z-Transform)}
