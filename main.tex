@@ -794,7 +794,7 @@ Let us examine several approaches:
 $$\int_{(n-1)T}^{nT}g_i(t)dt\simeqTg_i[(n-1)T]$$
 $$\therefore x_i(nT)-x_i[(n-1)T]=Tg_i[(n-1)T]$$
 $$x_i(\tau)-z^{-1}x_i(z)=Tz^{-1}G_i(z)$$
-$$({z-1\over T})x_i(z)=G_i(z)\Rightarrow\tcolorbox{S_a={z-1\over T}\quad\text{Substitude this expression in transform}}$$
+$$({z-1\over T})x_i(z)=G_i(z)\Rightarrow\tcolorbox{S_a={z-1\over T}\quad\text{Substitute this expression in transform}}$$
 Let's check out 3 criteria:
 \begin{enumerate}
 \item Rational function? OK
@@ -835,6 +835,23 @@ $|z|=1\text{ only for }w_a=0 (w_a\ll 1/T)$
 \end{enumerate}
 
 \subsection{Trapezoidal Integrator (Bilinear Z-Transform)}
+
+$$\int_{(n-1)T}^{nT}g_i(t)dt\simeq{T\over 2}\left[g_i(nT)\g_i[(n-1)T]\right]$$
+$$x_i(nT)-x_i[(n-1)T]\simeq{T\over 2}\left[g_i(nT)+g_i[(n-1)T]\right]$$
+$$x_i(z)-z^{-1}x_i(z)={T\over 2}[G_i(z)+z^{-1}G_i(z)]$$
+$$({2\over T}\underbrace{z-1\over z+1}_{s_a})x_i(z)=G_i(z)\qquad \text{ Select }s_a={2\over T}({z-1\over z+1})$$
+\begin{enumerate}
+ \item Rational? O.K.
+ \item Mapping into unit circle? $s_a=jw_a={2\over T}({z=1\over z+1})$\\
+$jw_{a\over 2}T(z+1)=z-1$\\
+$z(1-jw_{a\over 2}T)=1+jw_{a\over 2}T\quad z={1+jw_{a\over 2}T\over 1-jw_{a\over 2}T} \quad |z|=1 \quad\text{ O.K.}$
+\item Stable? test $s_a=\sigma_a+jw_a\quad\sigma_a<0$
+$|z|=\left|{1+\sigma_aT/2+jw_aT/2\over(1-\sigma_{a\over 2}T)-jw_aT/2}\right|<1 \text{ O.K.}
+$jw_a={2\over T}{e^{jwT}-1\over e^{jwT}+1}={2\over T}{e^{jwT\over 2}-e^{-jwT\over 2}\over e^{jwT\over 2}+e^{-jwT\over 2}}=j({2\over T})\tan({wT\over 2})$
+$\therefore\tcolorbox{{w_aT\over 2}=\tan({wT\over 2})\text{ or }{wT\over 2}=\tan^{-1}({w_aT\over 2})}
+Which relates the frequency of the continuous time model ($w_a$) to the sampled data frequency (w).
+$w\sim w_a\text{ near }w=0,\pm{2\pi\over T}$
+Thus, the w-axis (sampled frequency) is warped as compared with the analog frequency $w_a$.
 
 \begin{figure}[h]
   \centering\includegraphics[scale=0.5]{chapter2_figure6.png}
