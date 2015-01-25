@@ -65,6 +65,7 @@
 \usepackage{wrapfig}
 \usepackage{mathtools}
 \usepackage{amsfonts}
+\usepackage{tcolorbox}
 
 % Resizing tables
 \usepackage{tabulary}
@@ -781,7 +782,15 @@ Let us examine several approaches:
 $$\int_{(n-1)T}^{nT}g_i(t)dt\simeqTg_i[(n-1)T]$$
 $$\therefore x_i(nT)-x_i[(n-1)T]=Tg_i[(n-1)T]$$
 $$x_i(\tau)-z^{-1}x_i(z)=Tz^{-1}G_i(z)$$
-$$({z-1\over T})x_i(z)=G_i(z)\Rightarrow
+$$({z-1\over T})x_i(z)=G_i(z)\Rightarrow\tcolorbox{S_a={z-1\over T}\quad\text{Substitude this expression in transform}}$$
+Let's check out 3 criteria:
+\begin{enumerate}
+\item Rational function? OK
+\item Mapping into unit circle? $S_a=\zeta w_a\to Z=1+S_aT=1+jw_aT$\\
+$|z|=1$ only when $w_a=0$ or $w_a\ll\sfrac{1}{T} in general not satisfied
+\item Stability? Most complex poles in LHP map into the unit circle, but as the poles approach the jw axis instability may occur.
+\end{enumerate}
+Zeros do not map from jw axis to the unit circle.
 
 \begin{figure}[h]
   \centering\includegraphics[scale=0.5]{chapter2_figure3.png}
@@ -799,6 +808,19 @@ $$({z-1\over T})x_i(z)=G_i(z)\Rightarrow
   \centering\includegraphics[scale=0.5]{chapter2_figure5.png}
   \caption{I don't really know what this picture is yet. I just put it in.}
 \end{figure}
+
+$$\int_{(n-1)T}^{nT}g_i(t)dt\simeq Tg_i(nT)$$
+$$x_i(nT)-x_i[(n-1)T]\simeq Tg_i(nT)$$
+$$x_i(z)-z^{-1}x_i(t)=TG(z)$$
+$$({1-z^{-1}\over T})\cdot X_i(z)=G(z)$$
+\tcolorbox{let $s_a={1-z^{-1}\over T}={z-1\over ZT}$ do transform}
+
+\begin{enumerate}
+\item Rational? O.K.
+\item MApping into unit circle? $Z={1\over 1-jw_aT}={1+jw_aT\over 1+w_a^2T^2}$\\
+$|z|=1\text{ only for }w_a=0 (w_a\ll 1/T)$
+\item Stability? Poles move away from unit circle in Z-plane as poles move towards $jw_a$ axis in s-plane. Not satisfied.
+\end{enumerate}
 
 \subsection{Trapezoidal Integrator (Bilinear Z-Transform)}
 
