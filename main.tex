@@ -796,7 +796,7 @@ $$\therefore x_i(nT)-x_i[(n-1)T]=Tg_i[(n-1)T]$$
 $$x_i(\tau)-z^{-1}x_i(z)=Tz^{-1}G_i(z)$$
 $({z-1\over T})x_i(z)=G_i(z)\Rightarrow$
 \begin{tcolorbox}
-  ${S_a={z-1\over T}\quad\text{Substitude this expression in transform}}$
+  ${S_a={z-1\over T}\quad\text{Substitute this expression in transform}}$
 \end{tcolorbox}
 
 Let's check out 3 criteria:
@@ -940,6 +940,81 @@ The following conditions are imposed:
 
 State variable representation of a 2$^{nd}$ order notch function
 
+\begin{equation}
+ {v_i\over R_0}+sc_1v_a+{v_0\over R_1}=0 \tag{\text{node A}}
+\end{equation}
+\begin{equation}
+ {v_0\over R_4} +sc_2v_0+sc_3v_i-{v_a\over R_2}=0 \tag{\text{node B}}
+\end{equation}
+
+\begin{tcolorbox}
+ Ken Martin, "Improved Circuits for Realization of Switched Capacitor Filters", Trans. Circuits and and Systems, CAS-27, 237-255 April 158D
+\end{tcolorbox}
+
+elimination of $v_a$ yields
+$$H_a(s_a)={v_0\over v_i}(s_a)={-{R_1\over R_0}(1+s^2c_1c_3R_0R_2)\over s^2R_1R_2c_1c_2+sR_1{c_1R_2\over R_4}+1}$$
+$$H_a(jw_a)={-{R_1\over R_0)(1-w_a^2R_0R_2c_1c_2c_3)\over 1-w_a^2R_1R_2c_1c_2+jw{R_1R_2\over R_4}}={-H_0(1-{w^2\over w_z^2})\over 1-{w^2\over w_0^2}+{jw\over w_0}\cdot{1\over Q}}$$
+
+In a 'notch' filter, we could in principle realize this function with two zeroes placed at $\pm jw_0$; however, such a filter would not have unity gain at zero frequency and also, the notch would not be sharp. To obtain a good notch filter we put tow poles close to the two zeroes on the semicircle. Since the pole/zero pair is equal distance from the from the origin the gain at zero frequency and infinite frequency is exactly one. Suppose we wish to describe a 'notch' filter ($2^{nd}$ order). We place two zeroes at $s=\pm jw_0$ and poles at
+$$-w_0\cos\theta\om jw_0\sin\theta\text{ to find}$$
+$$H(s)={(s-jw_0)(s+jw_0)\over(s+w_0\cos\theta|jw_0\sin\theta)(s+w_0\cos\theta-jw_0\sin\theta)}$$
+$$={s^2+w_0^2\over s^2+2w_0\cos\theta\cdot s+w_0^2}$$
+$$H(jw)={-w^2+w_0^2\over-w^2+2w_0\cos\theta jw+w_0^2}={-(1-\sfrac{w^2}{w_0^2})\over 1-{w^2\over w_0^2}+2j\cos\theta j{w\over w_0}}$$
+$$={-(1-\sfrac{w^2}{w_0^2})\over 1-{w^2\over w_0^2}+j{w\over w_0Q}}$$
+
+The zeroes can also be located at a different position along the jw axis for improved stability.\\
+For example, if we wish to suppress 60 Hz hum in a radio receiver, we set $w_0=120\pi$ to obtain
+$$H(s)={s^2+(120\pi)^2\over s^2+(2\pi120)\cos\theta\cdot s+(120\pi)^2}$$
+and select the value of Q.
+
+A switched capacitor realization of the BiQuad is
+
+We will write the node equations as
+\begin{equation}
+ c_1[v_a(n)-v_a(n-1)]+\alpha_1c_1v_0(n)+\alpha_0c_1v_i(n)=0 \tag{\text{node A}}
+\end{equation}
+\begin{equation}
+ c_2[v_0(n)-v_0(n-1)]+\alpha_3c_2[v_i(n)-v_i(n-1)]+\alpha_2c_2[0-v_a(n-1)]+\alpha_4c_2v_0(n)=0 \tag{\text{node B}}
+\end{equation}
+Performing the Z transform
+$$v_a(1-z^{-1})+\alpha_1v_0+\alpha_0v_i=0$$
+$$v_0(1-z^{-1})+\alpha_3v_i(1-z^{-1})+\alpha_4v_0-\alpha_2v_0z^{-1}=0$$
+and we have
+$$H(z){v_0\over v_i}(z)={-\alpha_3z^2+(\alpha_0\alpha_2-z\alpha_3)z+\alpha_3\over(1+\alpha_4)z^2+(alpha_1\alpha_2-\alpha_4-z)z+1}={-\alpha_3z+\alpha_3z^{-1}+\alpha_0\alpha_2-z\alpha_3\over (1+\alpha_4)z+z^{-1}+(\alpha_1\alpha_2-\alpha_4-z)}$$
+to find the frequency response we substitute $z=e^{jwT}$ to find
+$$H(jw)={-{\alpha_0\over\alpha_1}\left[1-{4\alpha_3\over\alpha_1\alpha_2}\sin^2({wT\over2})\right]\over1-2{(2+\alpha_4)\over\alpha_1\alpha_2}\sin^2{wT\over2}+{j\alpha_4\over\alpha_1\alpha_2}\sin wT}\qquad\text{Transfer function of BiQuad}$$
+Let us assume $wT\ll1$ and $\alpha_4\ll2$, which gives
+$$H(jw)\simeq{-{\alpha_0\over\alpha_1}\left[1-{\alpha_3w^2\over\alpha_1\alpha_2}T^2\right]\over1-{w^2T^2\over\alpha_1\alpha_2}+{jw\alpha_4T\over\alpha_1\alpha_2}}={-H_0(1-{w^2\over w_z^2}\over1-{w^2\overw_0^2}+{jw\over w_0Q}}\quad\text{$w_z>w_0$\\Low pass notch\\$w_z<w_0$\\high pass notch}$$
+$$w_z={1\over T}\sqrt{\alpha_1\alpha_2\over\alpha_3}\quad w_0={1\over T}\sqrt{\alpha_1\alpha_2}\quad Q={\sqrt{alpha_1\alpha_2}\over \alpha_4}$$
+There are 5 unknowns ($\alpha_0,\alpha_1,\alpha_2,\alpha_3\alpha_4$) and 4 equations, so $\alpha1\alpha_2$ can be used to give an optimum dynamic range. For high Q applications we select $\alpha_1=\alpha_2$ as a good choice.\\
+Which gives
+$$\alpha_1=\alpha_2=w_0T\quad\alpha_3=(sfrac{w_0}{w_z})^2$$
+$$\alpha_0=H_0w_0T\quad\alpha_4=\sfrac{w_0T}{Q}$$
+We can look at an example
+$$Q=5.0\quad w_0=2\pi(3.5 kHz)\quad w_0=2\pi(4.5 kHz)$$
+$$H_0=1\quad T={1\over 128 kHz}$$
+for an analog filter design. if we compare $H(w)$ to $H_a(w_a)$ then for frequencies less than 4 kHz (narrow band voice) there is less than 0.004 dB over this range\\
+A band pass circuit can be realized by replacing $c_3$ with a resistor and making $R_0$ infinite (i.e. feeding the input signal directly to the damped integrator)
+
+Let's analyse the above circuit
+\begin{equation}
+ c_1[v_0(n)-v_0(n-1)]+v_i(n)\alpha_0c_1+\alpha_3c_1v_0(n)-\alpha_1c_1v_1(n-1)=0 \tag{\text{node A}}
+\end{equation}
+\begin{equation}
+ v_0(n)\alpha_2c_2+c_2[v_1(n)-v_1(n-1)]=0 \tag{\text{node B}}
+\end{equation}
+
+taking the transforms
+$$v_0(1-z^{-1})+v_i\alpha_0+\alpha_3v_0-\alpha_1v_1z^{-1}=0$$
+$$v_0^-\alpha_2+v_1(1-z^{-1})=0$$
+
+Combining the equations (eliminating $v_1$) we have
+$$H(z)={-\alpha_0\over (1-z^{-1})+\alpha_3+{\alpha_1\alpha_2z^{-1}\over 1-z^{-1}}}={-\alpha_0(z-1)\over (1+\alpha_3)z+z^{-1}-(z+\alpha_3)+\alpha_1\alpha_2}$$
+$${{-\alpha_0\over \alpha_1\alpha_2}[\coswT+j\sinwT-1]\over 1-2{(2+\alpha_3)\over\alpha_1\alpha_2}\sin^2{wT\over2}+{j\alpha_3\over\alpha_1\alpha_2}\sin wT}\simeq{{-\alpha_0\over \alpha_1\alpha_2}Tjw\over 1-{(2+\alpha_3)\over2\alpha_1\alpha_2}w^2T^2+{j\alpha_3wT\over \alpha_1\alpha_2}}$$
+Matching $H(w)$ and $H_a(w_a)$ yields
+$$w_1={\alpha_1\alpha_2\over\alpha_0T}\quad w_0^2={2\alpha_1\alpha_2\over(2+\alpha_3)T^2}\quad Q=\sqrt{\alpha_1\alpha_2(2+\alpha_3\over2\alpha_3^2}$$
+where $H_0=1$ is assumed in the analog frequency domain.\\
+Thus, we see discrete analog signal processing requires  MOS capacitors, MOS transistors (switches) and Operational Amplifiers
 
 \begin{figure}[h]
   \centering\includegraphics[scale=0.5]{chapter2_figure12.png}
