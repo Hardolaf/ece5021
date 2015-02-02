@@ -1043,6 +1043,40 @@ Thus, we see discrete analog signal processing requires  MOS capacitors, MOS tra
 \end{figure}
 
 %----------------------------------------------------------------------------------------
+%	CHAPTER 2
+%----------------------------------------------------------------------------------------
+
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+
+\chapter{MOS Transistor Theory and SPICE Parameters}
+
+\section{DC & AC Parameters}\index{DC & AC Parameters!Continuous to Sampled Data Systems}
+
+\begin{itemize}
+ \item Threshold Voltage
+ \item Body Effect
+ \item I-V Characteristics
+ \item AC parameters of small signal equivalent circuits
+ \item Small signal equivalent circuit in saturation mode
+\end{itemize}
+
+$$FIGURE$$
+
+$$V_T=V_{FB}+2\phi_F+sqrt{|V_{SB}|+2|\phi_F|}$$
+$$V_{FB}=\phi_{MS}-{Q_{SS}\over C_0}\quad,\quad C_o={K_0 \epsilon_0\overt_{ox}}$$
+$$\phi_F=\pm{kT\over q}\ln{N_B\over n_i}$$
+$$\gamma=\sqrt{2K_s\epsilon_0 qN_B}/C_0$$
+$$V_T=V_{T0}+\gamma[\sqrt{|V_{SB}|+2|\phi_F|}-s|\phi_F|]$$
+$$V_{T0}=V_T[V_{SB}=0]$$
+$\gamma=$ Gamma SPICE symbol
+$t_{ox}=$ oxide thickness
+$\phi=2\phi_F$ SPICE symbol
+$N_B=N_{SUB}$ substrate doping
+
+
+\subsection{Issues to Address in Selection of the Transformations}
+
+%----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
 
