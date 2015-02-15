@@ -984,7 +984,7 @@ $$H(z){v_0\over v_i}(z)={-\alpha_3z^2+(\alpha_0\alpha_2-z\alpha_3)z+\alpha_3\ove
 to find the frequency response we substitute $z=e^{jwT}$ to find
 $$H(jw)={-{\alpha_0\over\alpha_1}\left[1-{4\alpha_3\over\alpha_1\alpha_2}\sin^2({wT\over2})\right]\over1-2{(2+\alpha_4)\over\alpha_1\alpha_2}\sin^2{wT\over2}+{j\alpha_4\over\alpha_1\alpha_2}\sin wT}\qquad\text{Transfer function of BiQuad}$$
 Let us assume $wT\ll1$ and $\alpha_4\ll2$, which gives
-$$H(jw)\simeq{-{\alpha_0\over\alpha_1}\left[1-{\alpha_3w^2\over\alpha_1\alpha_2}T^2\right]\over1-{w^2T^2\over\alpha_1\alpha_2}+{jw\alpha_4T\over\alpha_1\alpha_2}}={-H_0(1-{w^2\over w_z^2}\over 1-{w^2\overw_0^2}+{jw\over  w_0Q}}\quad\text{$w_z>w_0$\\Low pass notch\\$w_z<w_0$\\high pass notch}$$
+$$H(jw)\simeq{-{\alpha_0\over\alpha_1}\left[1-{\alpha_3w^2\over\alpha_1\alpha_2}T^2\right]\over1-{w^2T^2\over\alpha_1\alpha_2}+{jw\alpha_4T\over\alpha_1\alpha_2}}={-H_0(1-{w^2\over w_z^2}\over 1-{w^2\over w_0^2}+{jw\over  w_0Q}}\quad\text{$w_z>w_0$\\Low pass notch\\$w_z<w_0$\\high pass notch}$$
 $$w_z={1\over T}\sqrt{\alpha_1\alpha_2\over\alpha_3}\quad w_0={1\over T}\sqrt{\alpha_1\alpha_2}\quad Q={\sqrt{alpha_1\alpha_2}\over \alpha_4}$$
 There are 5 unknowns ($\alpha_0,\alpha_1,\alpha_2,\alpha_3\alpha_4$) and 4 equations, so $\alpha1\alpha_2$ can be used to give an optimum dynamic range. For high Q applications we select $\alpha_1=\alpha_2$ as a good choice.\\
 Which gives
